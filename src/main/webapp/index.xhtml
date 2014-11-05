@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">  
+
+    <ui:composition template="/templates/default/main.xhtml">
+        <ui:define name="content">                        
+            <h1 class="page-header "> <i class="fa fa-tachometer"></i> Upload Files</h1>
+            <h:form enctype="multipart/form-data">
+
+
+                <p:fileUpload fileUploadListener="#{mainBean.handleFileUpload}" widgetVar="fileUpload" auto="true" multiple="false" process="@this"
+                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                              style="display: none" />
+
+                <style>
+                    .btn-file {
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    .btn-file input[type=file] {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        min-width: 100%;
+                        min-height: 100%;
+                        font-size: 999px;
+                        text-align: right;
+                        filter: alpha(opacity=0);
+                        opacity: 0;
+                        background: red;
+                        cursor: inherit;
+                        display: block;
+                    } 
+                </style>
+
+                <div class="row">
+                    <div class="col-md-12">                
+                        <span class="btn btn-primary btn-file">
+                            <i class="fa fa-upload"></i> Upload File
+                        </span>                        
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Uploaded Files</h4>
+                        <ul id="result">                        
+                        </ul>
+                    </div>
+                </div>
+
+            </h:form>                  
+            <script>
+                $(document).ready(function() {
+                    $('.ui-fileupload-buttonbar span input[type=file]').addClass('uploadBtn');
+                    $('.btn-file').append($('.uploadBtn'));
+                });
+            </script>
+        </ui:define>
+    </ui:composition>        
+
+</html>  
