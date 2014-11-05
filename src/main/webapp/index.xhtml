@@ -34,6 +34,10 @@
                         cursor: inherit;
                         display: block;
                     } 
+
+                    #editUserUploadMessages .ui-fileupload-files {
+                        display: none;
+                    }
                 </style>
 
                 <div class="row">
@@ -46,6 +50,7 @@
 
                 <div class="row">
                     <div class="col-md-3">
+                        <div id="editUserUploadMessages"></div>
                         <h4>Uploaded Files</h4>
                         <ul id="result">                        
                         </ul>
@@ -57,6 +62,11 @@
                 $(document).ready(function() {
                     $('.ui-fileupload-buttonbar span input[type=file]').addClass('uploadBtn');
                     $('.btn-file').append($('.uploadBtn'));
+
+                    $('.uploadBtn').change(function() {
+                        var a = $('.ui-fileupload-content').html();
+                        var b = $('#editUserUploadMessages').html(a);
+                    })
                 });
             </script>
         </ui:define>
