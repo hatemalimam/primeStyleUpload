@@ -13,7 +13,7 @@
 
                 <p:fileUpload fileUploadListener="#{mainBean.handleFileUpload}" widgetVar="fileUpload" auto="true" multiple="false" process="@this"
                               allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                              style="display: none" />
+                              style="display: none" sizeLimit="2000000" />
 
                 <style>
                     .btn-file {
